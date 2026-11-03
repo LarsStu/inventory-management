@@ -519,7 +519,8 @@ export default {
 
 .chart-legend {
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
   font-size: 0.875rem;
 }
 
@@ -609,8 +610,14 @@ export default {
   transform: scaleY(1.05);
 }
 
+/*
+ * The fixed-width bar chart scrolls inside its card on narrow screens,
+ * so it cannot push the whole page wider than the viewport.
+ */
 .chart-container {
   padding: 1.5rem 0;
+  overflow-x: auto;
+  min-width: 0;
 }
 
 .bar-chart {
@@ -692,9 +699,10 @@ export default {
   color: #64748b;
 }
 
+/* min(450px, 100%) keeps the 450px desktop column but lets the track shrink on phones. */
 .two-column-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(450px, 100%), 1fr));
   gap: 1.75rem;
 }
 

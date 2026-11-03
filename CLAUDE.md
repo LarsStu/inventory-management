@@ -54,6 +54,8 @@ npm install && npm run dev
 - `GET /api/dashboard/summary` - All filters
 - `GET /api/demand`, `/api/backlog` - No filters
 - `GET /api/spending/*` - Summary, monthly, categories, transactions
+- `POST /api/restocking-orders` - Submit restocking order `{ budget, items: [{ sku, quantity }] }`; 201, or 400 on over-budget/unknown SKU/duplicate SKU/non-positive quantity
+- `GET /api/restocking-orders` - Submitted restocking orders, newest first (in-memory, resets on restart)
 
 ## Common Issues
 1. Use unique keys in v-for (not `index`) - use `sku`, `month`, etc.
@@ -68,6 +70,9 @@ npm install && npm run dev
 - Backend: `server/main.py`, `server/mock_data.py`
 - Data: `server/data/*.json`
 - Styles: `client/src/App.vue`
+
+## Coding Conventions
+- Always document non-obvious logic changes with comments
 
 ## Design System
 - Colors: Slate/gray (#0f172a, #64748b, #e2e8f0)

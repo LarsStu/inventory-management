@@ -6,8 +6,19 @@ export default {
     orders: '注文',
     finance: '財務',
     demandForecast: '需要予測',
+    restocking: '在庫補充',
+    reports: 'レポート',
     companyName: '触媒コンポーネンツ',
-    subtitle: '在庫管理システム'
+    subtitle: '在庫管理システム',
+    mainMenu: 'メインメニュー',
+    groups: {
+      overview: '概要',
+      operations: '業務',
+      finance: '財務',
+      reports: 'レポート'
+    },
+    expandSidebar: 'サイドバーを開く',
+    collapseSidebar: 'サイドバーを閉じる'
   },
 
   // Dashboard
@@ -112,7 +123,11 @@ export default {
     onTimeDelivery: '定時配達',
     itemsCount: '{count}件',
     quantity: '数量',
+    submittedOrders: '提出済みの注文',
+    noSubmittedOrders: '提出済みの在庫補充注文はまだありません',
     table: {
+      submittedDate: '提出日',
+      leadTime: 'リードタイム',
       orderNumber: '注文番号',
       orderId: '注文ID',
       orderDate: '注文日',
@@ -130,6 +145,33 @@ export default {
   },
 
   // Finance/Spending
+  // Restocking
+  restocking: {
+    title: '在庫補充',
+    description: '予算を設定すると、需要予測に基づく在庫補充の推奨品目が表示されます',
+    budget: '予算',
+    selectedTotal: '選択合計',
+    remaining: '残額',
+    recommended: '推奨品目',
+    noRecommendations: '現在の予算では在庫補充は不要です',
+    leadTimeDays: '{count}日',
+    placeOrder: '注文する',
+    submitting: '送信中...',
+    orderSubmitted: '注文 {orderNumber} を提出しました。{count}日後に配達予定です。',
+    viewOrders: '注文一覧で確認',
+    error: '在庫補充注文を提出できませんでした',
+    table: {
+      include: '含める',
+      item: '品目',
+      sku: 'SKU',
+      supplier: '仕入先',
+      quantity: '数量',
+      unitCost: '単価',
+      lineTotal: '小計',
+      leadTime: 'リードタイム'
+    }
+  },
+
   finance: {
     title: '財務ダッシュボード',
     description: '収益、コスト、財務パフォーマンスの追跡',
@@ -204,6 +246,7 @@ export default {
     shipped: '出荷済み',
     processing: '処理中',
     backordered: 'バックオーダー',
+    submitted: '提出済み',
     inStock: '在庫あり',
     lowStock: '在庫僅少',
     adequate: '適量'
