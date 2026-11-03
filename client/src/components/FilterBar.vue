@@ -101,29 +101,57 @@ export default {
 </script>
 
 <style scoped>
+/*
+ * Sticks directly under the 64px app header (--header-height). Its container uses the
+ * same max-width and horizontal padding as .main-content so the filters line up with the cards.
+ */
 .filters-bar {
-  background: #f8fafc;
-  border-bottom: 1px solid #e2e8f0;
-  padding: 0.75rem 0;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-3) 0;
   position: sticky;
-  top: 70px;
-  z-index: 90;
+  top: var(--header-height);
+  z-index: var(--z-filters);
 }
 
 .filters-container {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 var(--space-6);
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .filters-grid {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-4);
   flex: 1;
+  min-width: 0;
+}
+
+/* Narrow screens: filters wrap instead of pushing the page wider than the viewport.
+   The bar is no longer sticky here, so four wrapped selects do not cover the content. */
+@media (max-width: 767px) {
+  .filters-bar {
+    position: static;
+  }
+
+  .filters-container {
+    padding: 0 var(--space-4);
+  }
+
+  .filter-group {
+    flex: 1 1 140px;
+    min-width: 0;
+  }
+
+  .filter-select {
+    flex: 1;
+    min-width: 0;
+  }
 }
 
 .filter-group {

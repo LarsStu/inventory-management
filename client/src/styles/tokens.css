@@ -1,0 +1,77 @@
+/*
+ * Design tokens for the app shell and views.
+ * Imported once from main.js so every component can use var(--token).
+ * Values follow the slate palette in CLAUDE.md; status colors (green/blue/yellow/red)
+ * stay as literal values in the views because they carry meaning, not theme.
+ */
+:root {
+  /* Surfaces */
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f1f5f9;
+  --color-border: #e2e8f0;
+
+  /* Text */
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+
+  /* Accent (one primary, blue family) */
+  --color-accent: #2563eb;
+  --color-accent-soft: #eff6ff;
+  --color-accent-hover: #1d4ed8;
+
+  /* Sidebar (dark slate) */
+  --sidebar-bg: #0f172a;
+  --sidebar-text: #cbd5e1;
+  --sidebar-text-muted: #64748b;
+  --sidebar-text-active: #ffffff;
+  --sidebar-hover-bg: #1e293b;
+  --sidebar-active-bg: #1e3a8a;
+  --sidebar-accent: #3b82f6;
+  --sidebar-divider: #1e293b;
+  --sidebar-width: 248px;
+  --sidebar-width-collapsed: 72px;
+
+  /* Header */
+  --header-height: 64px;
+
+  /*
+   * Stacking order (lowest to highest). Keep modals above everything else so
+   * they overlay the sidebar and header:
+   *   90   FilterBar (sticky under header)
+   *   100  app header (sticky)
+   *   190  backdrop behind the expanded sidebar overlay (below 1024px only)
+   *   200  sidebar (desktop, icon rail, and the expanded overlay below 1024px)
+   *   1000 header dropdowns (ProfileMenu, LanguageSwitcher) and TasksModal
+   *   2000 detail modals (InventoryDetailModal, CostDetailModal, ...)
+   */
+  --z-filters: 90;
+  --z-header: 100;
+  --z-backdrop: 190;
+  --z-sidebar: 200;
+
+  /* Spacing scale (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+
+  /* Radius and elevation */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.06);
+  --shadow-overlay: 0 10px 25px rgba(15, 23, 42, 0.12);
+
+  /* Type */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 0.9375rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+}

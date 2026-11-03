@@ -94,6 +94,18 @@ export const api = {
     return response.data
   },
 
+  // Restocking orders are submitted as { budget, items: [{ sku, quantity }] }.
+  // Prices and lead times are resolved on the server, so the client sends only SKUs and quantities.
+  async getRestockingOrders() {
+    const response = await axios.get(`${API_BASE_URL}/restocking-orders`)
+    return response.data
+  },
+
+  async createRestockingOrder(payload) {
+    const response = await axios.post(`${API_BASE_URL}/restocking-orders`, payload)
+    return response.data
+  },
+
   async createPurchaseOrder(purchaseOrderData) {
     const response = await axios.post(`${API_BASE_URL}/purchase-orders`, purchaseOrderData)
     return response.data

@@ -1,9 +1,9 @@
 <template>
   <div class="inventory">
-    <div class="page-header">
-      <h2>{{ t('inventory.title') }}</h2>
-      <p>{{ t('inventory.description') }}</p>
-    </div>
+    <PageHeader
+      :title="t('inventory.title')"
+      :description="t('inventory.description')"
+    />
 
     <div v-if="loading" class="loading">{{ t('common.loading') }}</div>
     <div v-else-if="error" class="error">{{ error }}</div>
@@ -89,11 +89,13 @@ import { api } from '../api'
 import { useFilters } from '../composables/useFilters'
 import { useI18n } from '../composables/useI18n'
 import InventoryDetailModal from '../components/InventoryDetailModal.vue'
+import PageHeader from '../components/PageHeader.vue'
 
 export default {
   name: 'Inventory',
   components: {
-    InventoryDetailModal
+    InventoryDetailModal,
+    PageHeader
   },
   setup() {
     const { t, currentCurrency, translateProductName, translateWarehouse } = useI18n()
@@ -225,32 +227,21 @@ export default {
 </script>
 
 <style scoped>
-.page-header {
-  margin-bottom: 1.5rem;
-}
-
-.page-header h2 {
-  margin-bottom: 0.25rem;
-}
-
-.page-header p {
-  color: #64748b;
-  font-size: 0.875rem;
-}
-
+/* Card header: wraps on narrow screens so the search box drops below the title. */
 .card-header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 1.5rem;
-  padding: 1.25rem 1.5rem;
-  border-bottom: 1px solid #e2e8f0;
+  gap: var(--space-4) var(--space-6);
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .card-title {
-  font-size: 1rem;
+  font-size: var(--text-base);
   font-weight: 600;
-  color: #0f172a;
+  color: var(--color-text);
   margin: 0;
 }
 
@@ -259,6 +250,13 @@ export default {
   display: flex;
   align-items: center;
   min-width: 300px;
+}
+
+@media (max-width: 640px) {
+  .search-box {
+    min-width: 0;
+    width: 100%;
+  }
 }
 
 .search-icon {
